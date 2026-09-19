@@ -70,6 +70,12 @@
       <hr>
       <button id="backgroundPatternButton" style="width: 142px"
         onclick="changeBackgroundPattern()">&#8202;&#8202;Background pattern: On</button><br>
+      <hr>
+      <center>
+        <p style="margin-top: 2px; margin-bottom: 3px">&#8202;&#8202;Resource growth speed</p>
+        <input id="growthSpeedInput" type="number" min="0.1" max="1000" step="0.1" value="1"
+          style="width: 60px" onchange="setGrowthSpeed(this.value)"></input><a style="margin-left: 4px">&times;</a>
+      </center>
       <div id="confirmationToggleBox" style="display: none;">
         <hr>
         <center>
@@ -1319,6 +1325,7 @@
   <script src="scripts/break_eternity.js"></script>
   <script src="scripts/Mousetrap.js"></script>
   <script src="scripts/constants.js"></script>
+  <script src="scripts/growthSpeed.js"></script>
   <script src="scripts/script.js"></script>
   <script src="scripts/gold.js"></script>
   <script src="scripts/dragon.js"></script>

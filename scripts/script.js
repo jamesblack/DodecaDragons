@@ -100,6 +100,7 @@ function reset() {
     lastSigilReset: Date.now(),
     timePlayed: 0,
     backgroundPatternOn: true,
+    growthSpeed: 1,
     confirmations: [true, true, true],
     achievementFlashActive: false,
     currentTab: 1,
@@ -557,6 +558,8 @@ function loadGame(loadgame) {
     document.getElementById("backgroundPatternButton").textContent = "Background Pattern: Off"
     document.body.style.backgroundImage = "none"
   }
+  //Shows the saved resource growth speed in the settings input
+  syncGrowthSpeedInput()
 
   //Desperate check to make sure people aren't ahead at the holy fire point
   if (!game.holyTetrahedronUpgradesBought[11] && game.unlocks >= 26) game.unlocks = 25
@@ -2193,7 +2196,7 @@ let timeSinceLastUpdate = Date.now()
 //Large update (occurs once per second)
 function updateLarge() {
   if (timeStopped) return;
-	timeDivider = Math.max(1000 / (Date.now() - timeSinceLastUpdate), 0.0001)
+	timeDivider = computeTimeDivider(Date.now() - timeSinceLastUpdate, game.growthSpeed)
   
   //Adds to the user's gold
   if (game.unlocks < 35 || game.nuclearPastaUpgradesBought[3] || (game.nuclearPastaState != 2 && game.nuclearPastaState != 5)) game.gold = game.gold.add(game.goldPerSecond.div(timeDivider))

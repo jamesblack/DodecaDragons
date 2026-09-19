@@ -1,0 +1,3 @@
+# Railpack staticfile provider config (https://railpack.com/languages/staticfile)
+# Serve the repo root directly: index.html, scripts/, img/, fonts/ are all here.
+root: .
